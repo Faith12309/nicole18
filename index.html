@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You Are Invited | Nicole's 18th Birthday</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#FFE9F1;--bg2:#FFF6F9;--blush:#FFD0E1;--ink:#6B1038;--wine:#800020;--wine-dark:#5C0017;--pink:#D81B6A;--card:#FFFFFF;--on-wine:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2B0715;--bg2:#3A0B1E;--blush:#5A1632;--ink:#FFDCE8;--wine:#FF9DBF;--wine-dark:#C94A7A;--pink:#FF6FA5;--card:#3A0B1E;--on-wine:#2B0715}}
+:root[data-theme="dark"]{--bg:#2B0715;--bg2:#3A0B1E;--blush:#5A1632;--ink:#FFDCE8;--wine:#FF9DBF;--wine-dark:#C94A7A;--pink:#FF6FA5;--card:#3A0B1E;--on-wine:#2B0715}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(120% 60% at 50% 0%,var(--bg2),var(--bg));background-color:var(--bg);color:var(--ink);font-family:'Jost','Helvetica Neue',Arial,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}
+.serif{font-family:'Playfair Display',Georgia,serif}
+.kicker{font-size:13px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;margin:0}
+
+/* progress + petals + confetti */
+.bar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--pink);transform-origin:left;transform:scaleX(0);z-index:30}
+.petals,.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.petals{z-index:1}.confetti{z-index:40}
+.petal{position:absolute;top:-30px;width:14px;height:18px;background:var(--pink);opacity:.35;border-radius:80% 0 80% 0;animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--dx),115vh,0) rotate(540deg)}}
+.cf{position:absolute;top:45%;left:50%;width:9px;height:14px;border-radius:2px;animation:burst 2.2s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+
+/* envelope */
+.intro{position:fixed;inset:0;z-index:20;background:radial-gradient(90% 60% at 50% 40%,var(--bg2),var(--bg));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:24px;text-align:center;transition:opacity .7s ease}
+.intro.done{opacity:0;pointer-events:none}
+.env{position:relative;width:min(310px,82vw);aspect-ratio:3/2;border:0;background:none;padding:0;cursor:pointer;perspective:900px;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 14px 22px rgba(128,0,32,.28));animation:float 3.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.env:focus-visible{outline:3px solid var(--pink);outline-offset:8px}
+.env span{position:absolute;display:block}
+.env .back{inset:0;background:var(--wine-dark);border-radius:6px}
+.env .letter{left:8%;right:8%;top:8%;bottom:8%;background:var(--card);border-radius:4px;z-index:2;transition:transform .9s ease .55s;display:flex;align-items:center;justify-content:center;color:var(--wine);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:46px}
+.env .pocket{inset:0;background:linear-gradient(160deg,var(--wine),var(--wine-dark));clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);border-radius:6px;z-index:3}
+.env .flap{left:0;right:0;top:0;height:54%;background:var(--wine-dark);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .6s ease;z-index:4}
+.env .seal{left:50%;top:54%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FF6FA5,#D81B6A 60%,#9C0F4C);color:#fff;z-index:5;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:27px;box-shadow:0 3px 8px rgba(0,0,0,.4);transition:opacity .3s ease}
+.env.open{animation:none}
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+.env.open .seal{opacity:0}
+.env.open .letter{transform:translateY(-62%)}
+.hint{margin:0;font-size:14px;letter-spacing:.2em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+/* page */
+main{max-width:520px;margin:0 auto;position:relative;z-index:2}
+.frame{position:fixed;inset:12px;border:2px solid var(--wine);border-radius:4px;pointer-events:none;z-index:10}
+.frame::after{content:"";position:absolute;inset:6px;border:1px solid var(--wine);border-radius:2px}
+section{padding:68px 34px;text-align:center}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden}
+.hero>*{position:relative}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:linear-gradient(135deg,var(--wine),var(--pink))}
+.hero::before{width:340px;height:340px;top:-210px;right:-210px}
+.hero::after{width:400px;height:400px;bottom:-240px;left:-240px}
+.dear{font-style:italic;font-size:20px;margin:0}
+.nw{position:relative;display:flex;align-items:center;justify-content:center;width:100%;margin:4px 0}
+.ring{position:absolute;width:min(300px,78vw);aspect-ratio:1;border:1.5px dashed var(--pink);border-radius:50%;animation:spin 40s linear infinite}
+.ring.r2{width:min(240px,62vw);border-style:dotted;animation-direction:reverse;animation-duration:30s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.num{position:relative;font-size:clamp(130px,44vw,185px);line-height:1;font-style:italic;font-weight:700;padding-right:.1em;color:var(--wine);background:linear-gradient(110deg,var(--wine) 30%,var(--pink) 50%,var(--wine) 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.name{font-size:clamp(38px,11.5vw,48px);font-weight:700;line-height:1.1;color:var(--wine);margin:0}
+.rule{width:64px;height:2px;background:var(--pink);margin:6px 0}
+.tag{font-size:clamp(24px,7vw,30px);font-style:italic;color:var(--pink);margin:0}
+.date-chip{margin-top:6px;padding:8px 20px;border:1px solid var(--wine);border-radius:999px;font-size:14px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--wine)}
+.scroll{margin-top:14px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+h2{font-size:32px;font-weight:500;font-style:italic;color:var(--pink);margin:0 0 6px}
+.sub{font-size:13px;letter-spacing:.3em;text-transform:uppercase;margin:0 0 24px}
+.quote{font-size:21px;font-style:italic;line-height:1.6;margin:0}
+.orn{display:block;margin:0 auto 18px;width:120px;height:14px}
+.card{background:var(--card);border:1px solid var(--blush);border-radius:18px;padding:12px 22px;box-shadow:0 10px 30px rgba(128,0,32,.10);text-align:left}
+.row{display:flex;gap:16px;align-items:center;padding:16px 0}
+.row+.row{border-top:1px solid var(--blush)}
+.ic{flex:none;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--wine),var(--pink));display:flex;align-items:center;justify-content:center}
+.ic svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.row small{display:block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);font-weight:600}
+.row strong{font-size:19px;font-weight:600;line-height:1.3}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:linear-gradient(135deg,var(--wine),var(--pink));color:#fff;font:600 15px 'Jost',sans-serif;letter-spacing:.08em;text-decoration:none;border:0;cursor:pointer}
+.btn.alt{background:none;color:var(--wine);border:1.5px solid var(--wine)}
+.btn:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cd div{background:var(--card);border:1px solid var(--blush);border-radius:14px;padding:14px 4px;box-shadow:0 8px 20px rgba(128,0,32,.08)}
+.cd b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:34px;line-height:1.1;color:var(--wine)}
+.cd small{font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tl{position:relative;list-style:none;margin:0;padding:0 0 0 30px;text-align:left}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--blush)}
+.tl li{position:relative;margin:0 0 24px}
+.tl li::before{content:"";position:absolute;left:-30px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--pink);border:3px solid var(--bg)}
+.tl time{display:block;font-size:13px;letter-spacing:.2em;font-weight:600;color:var(--pink)}
+.tl b{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500}
+.sw{display:flex;justify-content:center;gap:14px;margin-top:24px;flex-wrap:wrap}
+.sw figure{margin:0;width:64px}
+.sw i{display:block;width:52px;height:52px;border-radius:50%;margin:0 auto 6px;box-shadow:0 4px 10px rgba(128,0,32,.2)}
+.sw figcaption{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+footer{padding:30px 34px 90px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none;transition:none}.env .flap,.env .letter,.intro{transition-duration:.01s;transition-delay:0s}html{scroll-behavior:auto}.num{-webkit-text-fill-color:var(--wine);background:none}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<div class="intro" id="intro">
+  <p class="dear serif" id="g1" hidden></p>
+  <p class="kicker">You are invited</p>
+  <button class="env" id="env" type="button" aria-label="Open the invitation">
+    <span class="back"></span><span class="letter">18</span><span class="pocket"></span><span class="flap"></span><span class="seal">N</span>
+  </button>
+  <p class="hint">Tap to open</p>
+</div>
+
+<main id="main" hidden>
+  <div class="frame"></div>
+
+  <section class="hero">
+    <p class="dear serif" id="g2" hidden></p>
+    <p class="kicker">You are cordially invited to celebrate</p>
+    <div class="nw"><span class="ring"></span><span class="ring r2"></span><div class="num serif">18</div></div>
+    <h1 class="name serif">Nicole's</h1>
+    <p class="kicker" style="color:var(--wine)">Birthday Party</p>
+    <div class="rule"></div>
+    <p class="tag serif">A Flushing Pink Affair</p>
+    <div class="date-chip">October 26 &middot; 6:00 PM</div>
+    <p class="scroll">Scroll down</p>
+  </section>
+
+  <section class="rv">
+    <svg class="orn" viewBox="0 0 120 14" fill="none" stroke="var(--pink)" stroke-width="1.5" aria-hidden="true"><path d="M2 7h42M76 7h42"/><path d="M60 1l6 6-6 6-6-6z"/></svg>
+    <p class="quote serif">Join us for an evening of grace, joy, and unforgettable memories as she steps into adulthood.</p>
+  </section>
+
+  <section class="rv">
+    <h2 class="serif">The Details</h2>
+    <p class="sub">Save the date</p>
+    <div class="card">
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div><small>Date</small><strong>Monday, October 26, 2026</strong></div></div>
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Time</small><strong>6:00 PM onwards</strong></div></div>
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Venue</small><strong>Matty's Themed Events</strong></div></div>
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 5 4 5 8a5 5 0 0 1-10 0c0-4 3-5 5-8z"/><path d="M12 21v-3"/></svg></span><div><small>Theme</small><strong>Flushing Pink</strong></div></div>
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Matty%27s%20Themed%20Events" target="_blank" rel="noopener">Open in Maps</a>
+      <a class="btn alt" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Nicole%27s%2018th%20Birthday&amp;dates=20261026T100000Z/20261026T140000Z&amp;location=Matty%27s%20Themed%20Events&amp;details=A%20Flushing%20Pink%20Affair" target="_blank" rel="noopener">Add to Calendar</a>
+    </div>
+  </section>
+
+  <section class="rv">
+    <h2 class="serif">Counting Down</h2>
+    <p class="sub">Until the celebration</p>
+    <div class="cd" id="cd">
+      <div><b id="d">0</b><small>Days</small></div><div><b id="h">0</b><small>Hours</small></div><div><b id="m">0</b><small>Mins</small></div><div><b id="s">0</b><small>Secs</small></div>
+    </div>
+    <p id="cdmsg" class="quote serif" hidden>It's party time!</p>
+  </section>
+
+  <section class="rv">
+    <h2 class="serif">Evening Program</h2>
+    <p class="sub">How the night unfolds</p>
+    <ol class="tl">
+      <li><time>6:00 PM</time><b>Arrival &amp; Welcome</b></li>
+      <li><time>7:00 PM</time><b>Dinner &amp; Toasts</b></li>
+      <li><time>8:00 PM</time><b>Birthday Program</b></li>
+      <li><time>9:00 PM</time><b>Dancing &amp; Photos</b></li>
+    </ol>
+  </section>
+
+  <section class="rv">
+    <h2 class="serif">Dress Code</h2>
+    <p class="sub">Flushing pink</p>
+    <p class="quote serif">Wear your prettiest shade of pink</p>
+    <div class="sw">
+      <figure><i style="background:#FFD0E1"></i><figcaption>Blush</figcaption></figure>
+      <figure><i style="background:#FF8FB5"></i><figcaption>Rose</figcaption></figure>
+      <figure><i style="background:#F0509A"></i><figcaption>Flush</figcaption></figure>
+      <figure><i style="background:#D81B6A"></i><figcaption>Raspberry</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="rv">
+    <h2 class="serif">Will You Join Us?</h2>
+    <p class="sub">Kindly reply</p>
+    <p id="rsvpNote" class="quote serif">RSVP details coming soon.</p>
+    <div class="btns">
+      <a id="rsvp" class="btn" href="#" target="_blank" rel="noopener" hidden>RSVP now</a>
+      <button id="share" class="btn alt" type="button" hidden>Share invitation</button>
+    </div>
+  </section>
+
+  <footer class="rv">
+    <svg class="orn" viewBox="0 0 120 14" fill="none" stroke="var(--pink)" stroke-width="1.5" aria-hidden="true"><path d="M2 7h42M76 7h42"/><path d="M60 1l6 6-6 6-6-6z"/></svg>
+    <p class="serif" style="font-style:italic;font-size:22px;margin:0">We can't wait to celebrate with you</p>
+    <p class="kicker" style="margin-top:14px;color:var(--wine)">Nicole &middot; 18 &middot; 10.26.2026</p>
+  </footer>
+</main>
+
+<script>
+// Paste Nicole's RSVP link (e.g. https://m.me/username or sms:+63XXXXXXXXXX). Leave '' to hide the button.
+var RSVP_LINK = 'https://m.me/colai.sanico';
+// Party start (Philippine Time, UTC+8)
+var PARTY = new Date('2026-10-26T18:00:00+08:00').getTime();
+
+var intro = document.getElementById('intro'), env = document.getElementById('env'), main = document.getElementById('main');
+var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Personalised greeting: add ?to=Guest%20Name to the link
+var guest = (new URLSearchParams(location.search).get('to') || '').trim().slice(0, 40);
+if (guest) ['g1', 'g2'].forEach(function (id) { var e = document.getElementById(id); e.textContent = 'Dear ' + guest + ','; e.hidden = false; });
+
+function petals() {
+  if (reduce) return;
+  var box = document.getElementById('petals');
+  for (var i = 0; i < 14; i++) {
+    var p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
+    p.style.animationDuration = (9 + Math.random() * 9) + 's';
+    p.style.animationDelay = (-Math.random() * 14) + 's';
+    p.style.transform = 'scale(' + (0.7 + Math.random() * 0.8) + ')';
+    box.appendChild(p);
+  }
+}
+function confetti() {
+  if (reduce) return;
+  var box = document.getElementById('confetti'), cols = ['#D81B6A', '#FF8FB5', '#800020', '#FFD0E1', '#F0509A'];
+  for (var i = 0; i < 46; i++) {
+    var c = document.createElement('span'), a = Math.random() * Math.PI * 2, d = 120 + Math.random() * 240;
+    c.className = 'cf';
+    c.style.background = cols[i % cols.length];
+    c.style.setProperty('--x', Math.cos(a) * d + 'px');
+    c.style.setProperty('--y', Math.sin(a) * d + 80 + 'px');
+    c.style.setProperty('--r', Math.random() * 720 + 'deg');
+    box.appendChild(c);
+  }
+  setTimeout(function () { box.textContent = ''; }, 2400);
+}
+function reveal() {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.15 });
+  els.forEach(function (e) { io.observe(e); });
+}
+
+env.addEventListener('click', function () {
+  if (env.classList.contains('open')) return;
+  env.classList.add('open');
+  setTimeout(function () {
+    main.hidden = false;
+    window.scrollTo(0, 0);
+    intro.classList.add('done');
+    confetti(); petals(); reveal();
+    setTimeout(function () { intro.hidden = true; }, 800);
+  }, 1700);
+});
+
+var bar = document.getElementById('bar');
+window.addEventListener('scroll', function () {
+  var h = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, scrollY / h) : 0) + ')';
+}, { passive: true });
+
+function tick() {
+  var diff = PARTY - Date.now();
+  if (diff <= 0) { document.getElementById('cd').hidden = true; document.getElementById('cdmsg').hidden = false; return; }
+  var s = Math.floor(diff / 1000);
+  document.getElementById('d').textContent = Math.floor(s / 86400);
+  document.getElementById('h').textContent = Math.floor((s % 86400) / 3600);
+  document.getElementById('m').textContent = Math.floor((s % 3600) / 60);
+  document.getElementById('s').textContent = s % 60;
+  setTimeout(tick, 1000);
+}
+tick();
+
+if (RSVP_LINK) {
+  var r = document.getElementById('rsvp'); r.href = RSVP_LINK; r.hidden = false;
+  document.getElementById('rsvpNote').textContent = 'Kindly let us know if you can make it.';
+}
+if (navigator.share) {
+  var sh = document.getElementById('share'); sh.hidden = false;
+  sh.addEventListener('click', function () {
+    navigator.share({ title: "Nicole's 18th Birthday", text: "You're invited to Nicole's 18th birthday!", url: location.href }).catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
