@@ -92,9 +92,26 @@ h2{font-size:32px;font-weight:500;font-style:italic;color:var(--pink);margin:0 0
 .tl time{display:block;font-size:13px;letter-spacing:.2em;font-weight:600;color:var(--pink)}
 .tl b{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500}
 .sw{display:flex;justify-content:center;gap:14px;margin-top:24px;flex-wrap:wrap}
-.sw figure{margin:0;width:64px}
-.sw i{display:block;width:52px;height:52px;border-radius:50%;margin:0 auto 6px;box-shadow:0 4px 10px rgba(128,0,32,.2)}
+.sw figure{margin:0;width:92px}
+.sw i{display:block;width:60px;height:60px;border-radius:50%;margin:0 auto 6px;box-shadow:0 4px 10px rgba(128,0,32,.2)}
 .sw figcaption{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.pass{position:relative;background:var(--card);border:1.5px solid var(--wine);border-radius:18px;padding:28px 22px 22px;text-align:center;box-shadow:0 10px 30px rgba(128,0,32,.14)}
+.pass::before,.pass::after{content:"";position:absolute;top:47%;width:24px;height:24px;border-radius:50%;background:var(--bg);border:1.5px solid var(--wine)}
+.pass::before{left:-13px}.pass::after{right:-13px}
+.adm{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--pink);font-weight:600}
+.who{font-size:32px;font-weight:700;color:var(--wine);margin:6px 0 0;line-height:1.2;word-break:break-word}
+.plus{font-size:18px;font-weight:600;margin-top:4px}
+.pass hr{border:0;border-top:2px dashed var(--blush);margin:20px -22px}
+.pass .meta{font-size:16px;line-height:1.7}
+.pass .note{font-size:13px;margin:14px 0 0;opacity:.85}
+.dt details{background:var(--card);border:1px solid var(--blush);border-radius:14px;margin-bottom:12px;text-align:left;box-shadow:0 8px 20px rgba(128,0,32,.08)}
+.dt summary{cursor:pointer;list-style:none;min-height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-family:'Playfair Display',Georgia,serif;font-size:22px;color:var(--wine);font-weight:500}
+.dt summary::-webkit-details-marker{display:none}
+.dt summary::after{content:"+";font-family:'Jost',sans-serif;font-size:28px;color:var(--pink);line-height:1}
+.dt details[open] summary::after{content:"\2212"}
+.dt summary:focus-visible{outline:3px solid var(--pink);outline-offset:2px;border-radius:14px}
+.dt ol{margin:0;padding:2px 20px 18px 46px;line-height:1.9;font-size:17px}
+.dt .tba{padding:0 20px 18px;margin:0;font-style:italic;opacity:.8}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:none}
 footer{padding:30px 34px 90px;text-align:center}
@@ -172,14 +189,23 @@ footer{padding:30px 34px 90px;text-align:center}
 
   <section class="rv">
     <h2 class="serif">Dress Code</h2>
-    <p class="sub">Flushing pink</p>
-    <p class="quote serif">Wear your prettiest shade of pink</p>
+    <p class="sub">Flushing pink, white &amp; cream white</p>
+    <p class="quote serif">Dress in flushing pink, white, or cream white</p>
     <div class="sw">
-      <figure><i style="background:#FFD0E1"></i><figcaption>Blush</figcaption></figure>
-      <figure><i style="background:#FF8FB5"></i><figcaption>Rose</figcaption></figure>
-      <figure><i style="background:#F0509A"></i><figcaption>Flush</figcaption></figure>
-      <figure><i style="background:#D81B6A"></i><figcaption>Raspberry</figcaption></figure>
+      <figure><i style="background:#F0509A"></i><figcaption>Flushing Pink</figcaption></figure>
+      <figure><i style="background:#FFFFFF;border:2px solid #D98BAE"></i><figcaption>White</figcaption></figure>
+      <figure><i style="background:#FFF1D6;border:2px solid #D98BAE"></i><figcaption>Cream White</figcaption></figure>
     </div>
+  </section>
+
+  <section class="rv dt">
+    <h2 class="serif">The Eighteens</h2>
+    <p class="sub">Our honored guests</p>
+    <details><summary>18 Candles</summary><div id="l-candles"></div></details>
+    <details><summary>18 Roses</summary><div id="l-roses"></div></details>
+    <details><summary>18 Treasures</summary><div id="l-treasures"></div></details>
+    <details><summary>18 Bills</summary><div id="l-bills"></div></details>
+    <details><summary>18 Shots</summary><div id="l-shots"></div></details>
   </section>
 
   <section class="rv">
@@ -189,6 +215,19 @@ footer{padding:30px 34px 90px;text-align:center}
     <div class="btns">
       <a id="rsvp" class="btn" href="#" target="_blank" rel="noopener" hidden>RSVP now</a>
       <button id="share" class="btn alt" type="button" hidden>Share invitation</button>
+    </div>
+  </section>
+
+  <section class="rv" id="pass" hidden>
+    <h2 class="serif">Your Entrance Pass</h2>
+    <p class="sub">Please present at the gate</p>
+    <div class="pass">
+      <div class="adm" id="adm">Admit One</div>
+      <div class="who serif" id="who"></div>
+      <div class="plus" id="plus" hidden></div>
+      <hr>
+      <div class="meta"><b>Nicole's 18th Birthday</b><br>Monday, October 26, 2026 &middot; 6:00 PM<br>Matty's Themed Events</div>
+      <p class="note">This invitation is reserved for the guest(s) named above only. Kindly show this pass, or a screenshot of it, at the entrance.</p>
     </div>
   </section>
 
@@ -202,6 +241,14 @@ footer{padding:30px 34px 90px;text-align:center}
 <script>
 // Paste Nicole's RSVP link (e.g. https://m.me/username or sms:+63XXXXXXXXXX). Leave '' to hide the button.
 var RSVP_LINK = 'https://m.me/colai.sanico';
+// Names for the 18s. Put up to 18 names in each list, e.g. candles: ['Maria Santos', 'Juan Dela Cruz']
+var DEBUT = {
+  candles: ["Joan Borje", "Jillian Dalogdog", "Jelaine Dalogdog", "Zairee Alin", "Kiarah Balbin", "Keyshia Bendong", "Mary Dorothy Atanacio", "Lyka Calapiz", "Arianne Bagunbon", "Arabhie Baja", "Ashley Bagunbon", "Myralona Tamala", "Nanay Inday Bernus", "Maria Esma", "Imee Caboverde", "Carmelita Ortega", "Celia Bello", "Gervie Bularon"],
+  roses: ["Prince Nino Joshua Borje", "Micheal Angelo Sanico", "Von Zorilla", "Neathan Illustrisimo", "Andre Villareal", "Lougie Tormis", "Josh Mickael Castro", "Kurt Mosota", "Yoki Lim", "Nicholas Tan", "Prince Palon", "Josh Galanza", "Keith Adrian Manalo", "Paolo Saguin", "Mark Micubo", "Japhet Tamala", "Mikki Sanico", "John Cirell Ello"],
+  treasures: ["Joan Borje", "Jona Bagunbon", "Cherry Sanico", "Micheal Angelo Sanico", "Prince Nino Joshua Borje", "Arianne Bagunbon", "Jelaine Dalogdog", "Jillian Dalogdog", "Zairee Alin", "Arabhie Baja", "Engr. Junie Caboverde", "Joy Caboverde", "Dexter Caboverde", "Wayne Tamala", "Enelia Magsalay", "Harry Bernus", "Niño Bernus", "Japhet Tamala"],
+  bills: ["Danica Montero", "Imee Caboverde", "Celia Bello", "Alicia Ladera", "Myralona Tamala", "Elsie Baja", "Maria Esma", "Remelyn & Mario Andrada", "Divon Salomon", "Carmelita Ortega", "Inday Juana Bernus", "Vilma Angay", "Joy Fertig", "Cherry Sanico", "Jona Bagunbon", "Vilma Albos", "Joan Borje", "Valentino Borje"],
+  shots: ["Princess Ann Nicole Borje", "Joan Borje", "Cherry Sanico", "Arianne Bagunbon", "Faith Bagunbon", "Gervie Bularon", "Mary Dorothy Atanacio", "Jelaine Dalogdog", "Jillian Dalogdog", "Zairee Alin", "Von Zorilla", "Andre Villareal", "Yoki Lim", "Nicholas Tan", "Prince Palon", "Josh Mickael Castro", "Josh Galanza", "Keith Adrian Manalo"]
+};
 // Party start (Philippine Time, UTC+8)
 var PARTY = new Date('2026-10-26T18:00:00+08:00').getTime();
 
@@ -209,8 +256,28 @@ var intro = document.getElementById('intro'), env = document.getElementById('env
 var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Personalised greeting: add ?to=Guest%20Name to the link
-var guest = (new URLSearchParams(location.search).get('to') || '').trim().slice(0, 40);
+var params = new URLSearchParams(location.search);
+var guest = (params.get('to') || '').trim().slice(0, 40);
+var seats = Math.max(1, Math.min(10, parseInt(params.get('seats'), 10) || 1));
 if (guest) ['g1', 'g2'].forEach(function (id) { var e = document.getElementById(id); e.textContent = 'Dear ' + guest + ','; e.hidden = false; });
+
+if (guest) {
+  var NUM = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+  document.getElementById('pass').hidden = false;
+  document.getElementById('adm').textContent = 'Admit ' + NUM[seats - 1];
+  document.getElementById('who').textContent = guest;
+  var pl = document.getElementById('plus');
+  pl.textContent = 'Reserved for ' + seats + (seats === 1 ? ' guest' : ' guests');
+  pl.hidden = false;
+}
+
+Object.keys(DEBUT).forEach(function (k) {
+  var box = document.getElementById('l-' + k), list = DEBUT[k];
+  if (!list.length) { var p = document.createElement('p'); p.className = 'tba'; p.textContent = 'To be announced'; box.appendChild(p); return; }
+  var ol = document.createElement('ol');
+  list.forEach(function (n) { var li = document.createElement('li'); li.textContent = n; ol.appendChild(li); });
+  box.appendChild(ol);
+});
 
 function petals() {
   if (reduce) return;
